@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 def solution_one(A):
-    ''' Returns a smallest element in a given int array ''''
+    ''' Returns a smallest element in a given int array '''
     big = max(A)
     small = min(A)
 
@@ -53,10 +53,38 @@ def solution_four(A):
                     if(distance == 0):
                         return smallest_pos_int
 
+def solution_five(N):
+    '''given a positive integer N, returns the length of its longest binary gap. The function should return 0 if N doesn't contain a binary gap.'''
+    bin_num = '{0:08b}'.format(N)
+    binary_gaps = []
+    counter = 0
+    count_check = False
+    for i in range(0, len(bin_num)-1, 1):
+        pos1 = bin_num[i]
+        pos2 = bin_num[i+1]
+        if(count_check == True):
+            if(bin_num[i] == '0'):
+                counter = counter + 1
+            else:
+                binary_gaps.append(counter)
+                counter = 0
+                count_check = False
+        else:
+            if(bin_num[i] == '1'):
+                if(bin_num[i+1] == '0'):
+                    count_check = True
+                    continue
+
+    if(len(binary_gaps)>0):
+        return max(binary_gaps)
+    else:
+        return 0
+
 
 if(__name__ == "__main__"):
     # solution_one([1, 2, 3, 4, 5])
     # print(solution_two(5))
-    print(solution_three(4))
+    # print(solution_three(4))
     # input = [-1, -3]
     # print(solution_four(input))
+    # print(solution_five(15))

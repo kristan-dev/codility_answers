@@ -28,10 +28,7 @@ class BinaryGapRegex:
         else:
             return 0
 
-    @staticmethod
-    def solution_one():
-        print("done")
-
 
 if(__name__ == "__main__"):
+    BinaryGapRegex.solution_five(10)
     print("done")
